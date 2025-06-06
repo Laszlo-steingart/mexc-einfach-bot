@@ -18,17 +18,25 @@ def place_order(side):
     url = "https://api.mexc.com/api/v3/order"
     timestamp = int(time.time() * 1000)
     params = {
-        "symbol": "BTC_USDT",           # <- KORREKTES SYMBOL MIT UNTERSTRICH
+        "symbol": "BTC_USDT",          # KORREKT für MEXC SPOT!
         "side": side.upper(),
         "type": "MARKET",
-        "quantity": 0.001,              # Testgröße, anpassen wenn nötig!
+        "quantity": 0.001,             # Testgröße
         "timestamp": timestamp
     }
     query = '&'.join([f"{k}={v}" for k, v in params.items()])
     signature = sign(query)
     params["signature"] = signature
     headers = {"X-MEXC-APIKEY": API_KEY}
+
+    # DEBUG-Output
+    print("DEBUG >> Sende Order an:", url)
+    print("DEBUG >> Params:", params)
+    print("DEBUG >> Headers:", headers)
+
     resp = requests.post(url, params=params, headers=headers)
+    print("DEBUG >> Status:", resp.status_code)
+    print("DEBUG >> Response:", resp.text)
     return resp.json()
 
 @app.route("/webhook", methods=["POST"])
