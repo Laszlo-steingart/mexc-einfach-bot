@@ -5,7 +5,7 @@ import requests
 from flask import Flask, request, jsonify
 
 # ==== DEINE ECHTEN API-KEYS HIER EINFÜGEN ====
-API_KEY = "mx0vglME1m6DJMJp0"
+API_KEY = "mx0vgIME1m6DJMJp0"
 API_SECRET = "47bc0ec01bbc4bcd8895b589df35d2b1"
 # =============================================
 
