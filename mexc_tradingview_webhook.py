@@ -4,10 +4,10 @@ import time
 import requests
 from flask import Flask, request, jsonify
 
-# === DEINE MEXC API-KEYS HIER EINTRAGEN ===
+# === DEINE MEXC SPOT API-KEYS HIER ===
 API_KEY = "mx0vglME1m6DJMyJp0"
 API_SECRET = "47bc0ec01bbc4bcd8895b589df35d2b1"
-# ==========================================
+# ======================================
 
 app = Flask(__name__)
 
@@ -18,10 +18,10 @@ def place_order(side):
     url = "https://api.mexc.com/api/v3/order"
     timestamp = int(time.time() * 1000)
     params = {
-        "symbol": "BTC_USDT",          # KORREKT für MEXC SPOT!
+        "symbol": "BTCUSDT",         # Genau so wie in exchangeInfo!
         "side": side.upper(),
         "type": "MARKET",
-        "quantity": 0.001,             # Testgröße
+        "quantity": 0.001,           # Ordergröße nach Wunsch anpassen
         "timestamp": timestamp
     }
     query = '&'.join([f"{k}={v}" for k, v in params.items()])
@@ -29,7 +29,7 @@ def place_order(side):
     params["signature"] = signature
     headers = {"X-MEXC-APIKEY": API_KEY}
 
-    # DEBUG-Output
+    # Debug-Output
     print("DEBUG >> Sende Order an:", url)
     print("DEBUG >> Params:", params)
     print("DEBUG >> Headers:", headers)
