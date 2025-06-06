@@ -4,10 +4,10 @@ import time
 import requests
 from flask import Flask, request, jsonify
 
-# ==== DEINE ECHTEN API-KEYS HIER EINFÜGEN ====
-API_KEY = "mx0vgIME1m6DJMJp0"
+# === HIER DIREKT DEINE API-KEYS EINTRAGEN ===
+API_KEY = "mx0vglME1m6DJMyJp0"
 API_SECRET = "47bc0ec01bbc4bcd8895b589df35d2b1"
-# =============================================
+# ============================================
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def place_order(side):
         "symbol": "BTCUSDT",
         "side": side.upper(),
         "type": "MARKET",
-        "quantity": 0.001,  # Beispielwert!
+        "quantity": 0.001,  # Testgröße
         "timestamp": timestamp
     }
     query = '&'.join([f"{k}={v}" for k, v in params.items()])
