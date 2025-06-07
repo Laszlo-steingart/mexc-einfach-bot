@@ -18,10 +18,10 @@ def place_order(side):
     url = "https://api.mexc.com/api/v3/order"
     timestamp = int(time.time() * 1000)
     params = {
-        "symbol": "BTCUSDT",         # Genau so wie in exchangeInfo!
+        "symbol": "XRPUSDT",         # <-- JETZT XRPUSDT!
         "side": side.upper(),
         "type": "MARKET",
-        "quantity": 0.001,           # Ordergröße nach Wunsch anpassen
+        "quantity": 10,              # Beispiel: 10 XRP (anpassen wie du willst)
         "timestamp": timestamp
     }
     query = '&'.join([f"{k}={v}" for k, v in params.items()])
